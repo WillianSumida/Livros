@@ -92,13 +92,15 @@ class LivroSqlite(contexto: Context): LivroDao{
         val livrosList: MutableList<Livro> = mutableListOf()
         while(livroCursor.moveToNext()){
             with(livroCursor){
-                Livro(
-                    getString(getColumnIndexOrThrow(COLUNA_TITULO)),
-                    getString(getColumnIndexOrThrow(COLUNA_ISBN)),
-                    getString(getColumnIndexOrThrow(COLUNA_PRIMEIRO_AUTOR)),
-                    getString(getColumnIndexOrThrow(COLUNA_EDITORA)),
-                    getInt(getColumnIndexOrThrow(COLUNA_EDICAO)),
-                    getInt(getColumnIndexOrThrow(COLUNA_PAGINAS))
+                livrosList.add(
+                    Livro(
+                        getString(getColumnIndexOrThrow(COLUNA_TITULO)),
+                        getString(getColumnIndexOrThrow(COLUNA_ISBN)),
+                        getString(getColumnIndexOrThrow(COLUNA_PRIMEIRO_AUTOR)),
+                        getString(getColumnIndexOrThrow(COLUNA_EDITORA)),
+                        getInt(getColumnIndexOrThrow(COLUNA_EDICAO)),
+                        getInt(getColumnIndexOrThrow(COLUNA_PAGINAS))
+                    )
                 )
             }
         }
